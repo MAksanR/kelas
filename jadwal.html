@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jadwal Booking Ruangan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="container nav-content">
+        <h1 class="logo">Menara Iqro</h1>
+
+        <!-- Toggle (Hamburger) -->
+        <button class="nav-toggle" id="navToggle">☰</button>
+
+        <!-- Menu -->
+        <div class="nav-links" id="navMenu">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="jadwal.html" class="nav-link">Jadwal Booking</a>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="container">
+    <h3 class="section-title">Daftar Jadwal Booking</h3>
+
+    <div class="table-responsive">
+    <table class="jadwal-table">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Ruangan</th>
+            <th>Mata Kuliah / Kegiatan</th>
+            <th>Jam</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+        </tr>
+        <tbody id="jadwalBody">
+        </tbody>
+    </table>
+    </div>
+</main>
+
+<script src="jadwal.js"></script>
+<script>
+    const links = document.querySelectorAll(".nav-link");
+    const currentPage = location.pathname.split("/").pop();
+
+    links.forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+        }
+    });
+
+    // Toggle navbar mobile
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    navToggle.onclick = () => {
+        navMenu.classList.toggle("show");
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusSpace - Sistem Booking Lantai 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-content">
+        <h1 class="logo">Menara Iqro</h1>
+
+        <!-- Toggle (Hamburger) -->
+        <button class="nav-toggle" id="navToggle">
+            ☰
+        </button>
+
+        <!-- Menu -->
+        <div class="nav-links" id="navMenu">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="jadwal.html" class="nav-link">Jadwal Booking</a>
+        </div>
+    </div>
+</nav>
+
+<!-- PILIH LANTAI (BUTTON) -->
+<div class="floor-buttons">
+    <button class="floor-btn active" data-floor="3">Lantai 3</button>
+    <button class="floor-btn" data-floor="2">Lantai 2</button>
+    <button class="floor-btn" data-floor="1">Lantai 1</button>
+</div>
+
+    <main class="container">
+        <h3 class="section-title">Laboratorium Komputer (Lantai 3)</h3>
+        <div class="grid-kelas">
+            <div class="card border-blue">
+                <div class="card-header"><h3>Lab Java</h3><span class="badge badge-lab">READY</span></div>
+                <span class="text-muted">25 PC • i7 Processor • AC</span>
+                <button class="btn-book blue">Booking Lab</button>
+            </div>
+            <div class="card border-blue">
+                <div class="card-header"><h3>Lab Programming</h3><span class="badge badge-lab">READY</span></div>
+                <span class="text-muted">40 PC • RTX GPU • AC</span>
+                <button class="btn-book blue">Booking Lab</button>
+            </div>
+        </div>
+
+        <h3 class="section-title">Ruang Teori</h3>
+        <div id="ruangan-container" class="grid-kelas">
+            </div>
+    </main>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Booking</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Mata Kuliah / Nama Kegiatan</label>
+                    <input type="text" id="courseName" placeholder="Contoh: Pemrograman Web" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex:1">
+                        <label>Jam Masuk</label>
+                        <input type="time" id="checkIn" required>
+                    </div>
+                    <div class="form-group" style="flex:1">
+                        <label>Jam Keluar</label>
+                        <input type="time" id="checkOut" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-confirm">Konfirmasi Sekarang</button>
+            </form>
+        </div>
+    </div>
+    <!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast"></div>
+
+
+    <script src="node.js"></script>
+    <script>
+    const links = document.querySelectorAll(".nav-link");
+    const currentPage = location.pathname.split("/").pop();
+
+    links.forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+        }
+    });
+</script>
+
+</body>
+</html>

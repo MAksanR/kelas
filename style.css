@@ -1,0 +1,427 @@
+:root {
+    --primary: #1a73e8;
+    --secondary: #2c3e50;
+    --success: #27ae60;
+    --lab-color: #3498db;
+    --bg: #f4f7f6;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--bg); color: #333; padding-bottom: 50px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar Responsif */
+.navbar { background: var(--secondary); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+
+.menu-toggle { display: none; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: white; border-radius: 2px; }
+
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { color: white; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.btn-profile { background: var(--primary); color: white; border: none; padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+
+/* Section Titles */
+.section-title { margin: 40px 0 20px; font-size: 1.4rem; border-left: 5px solid var(--primary); padding-left: 15px; color: var(--secondary); }
+
+/* Grid Layout */
+.grid-kelas { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px; 
+}
+
+/* Card Styling */
+.card { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 6px solid #ddd; transition: 0.3s; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+.border-green { border-top-color: var(--success); }
+.border-blue { border-top-color: var(--lab-color); }
+
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.badge { font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; background: #eafaf1; color: var(--success); }
+.badge-lab { background: #e3f2fd; color: var(--lab-color); }
+
+.text-muted { color: #7f8c8d; font-size: 0.85rem; margin-bottom: 20px; display: block; }
+
+.btn-book { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; color: white; }
+.btn-book.green { background: var(--success); }
+.btn-book.blue { background: var(--lab-color); }
+
+/* Modal Styling */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+.modal-content { background: white; margin: 10% auto; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; animation: slideDown 0.3s ease-out; }
+
+@keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.close-btn { font-size: 24px; cursor: pointer; color: #999; }
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-size: 0.9rem; margin-bottom: 5px; font-weight: 600; }
+.form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+.form-row { display: flex; gap: 10px; }
+.btn-confirm { width: 100%; padding: 14px; background: var(--success); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+/* Media Query */
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: var(--secondary); padding: 20px; }
+    .menu-toggle:checked ~ .nav-links { display: flex; }
+    .nav-links a { margin-bottom: 15px; width: 100%; text-align: center; }
+}
+
+.jadwal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.jadwal-table th, .jadwal-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.jadwal-table th {
+    background: var(--primary);
+    color: white;
+}
+
+/* Default navbar link */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+/* Hover → biru */
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Active (halaman sedang dibuka) */
+.nav-links a.active {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+.floor-selector {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.floor-selector select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+.coming-soon {
+    background: #ececec;
+    border-radius: 12px;
+    padding: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #777;
+}
+
+/* FLOOR BUTTON */
+.floor-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0 30px;
+}
+
+.floor-btn {
+    padding: 10px 18px;
+    border-radius: 20px;
+    border: 2px solid var(--primary);
+    background: white;
+    color: var(--primary);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.floor-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.floor-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.coming-soon {
+    background: #ececec;
+    border-radius: 14px;
+    padding: 70px;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #777;
+}
+
+.coming-soon-card {
+    grid-column: 1 / -1;
+    background: #f1f1f1;
+    padding: 60px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #777;
+    font-weight: bold;
+}
+
+
+
+/* Mode HP */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--secondary);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        display: none;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin-bottom: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* ===============================
+   BACKGROUND GEDUNG ELEGAN
+================================ */
+.page-bg {
+    min-height: 100vh;
+    background: url("img/gedung-iqro.jp") center / cover no-repeat;
+    position: relative;
+}
+
+/* Efek blur */
+.page-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(6px);
+    transform: scale(1.05);
+    z-index: 0;
+}
+
+/* Konten di atas blur */
+.page-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px;
+}
+/* ===============================
+   TOAST NOTIFICATION
+================================ */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 14px 20px;
+    background: #333;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+    z-index: 9999;
+}
+
+/* TAMPIL */
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* WARNA */
+.toast.success { background: #28a745; }
+.toast.error { background: #dc3545; }
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+.toast {
+    pointer-events: none;
+}
+
+/* ===============================
+   NAVBAR RESPONSIVE
+================================ */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 12px;
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+/* ===============================
+   RESPONSIVE NAVBAR
+================================ */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-content {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: var(--secondary);
+        margin-top: 15px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 14px;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* Make tables horizontally scrollable on small screens and improve touch targets */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.jadwal-table {
+    min-width: 700px;
+}
+
+@media (max-width: 700px) {
+    .container { padding: 0 12px; }
+
+    .jadwal-table { min-width: 600px; }
+
+    .jadwal-table th, .jadwal-table td {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .btn-delete {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+
+    .btn-book { padding: 12px; font-size: 1rem; }
+
+    /* Reduce modal margin on small screens */
+    .modal-content { margin: 6% auto; width: 95%; max-width: 420px; padding: 20px; }
+
+    /* Improve navbar spacing */
+    .nav-links a { font-size: 1rem; padding: 12px 16px; }
+}
+
+@media (max-width: 420px) {
+    .jadwal-table { min-width: 520px; }
+    .section-title { font-size: 1rem; }
+    .logo { font-size: 1.05rem; }
+}
